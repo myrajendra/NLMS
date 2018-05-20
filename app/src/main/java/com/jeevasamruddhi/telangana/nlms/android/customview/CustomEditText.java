@@ -9,7 +9,7 @@ import android.widget.EditText;
 import com.jeevasamruddhi.telangana.nlms.android.R;
 
 
-public class CustomEditText extends EditText {
+public class CustomEditText extends android.support.v7.widget.AppCompatEditText {
 
     public CustomEditText(Context context) {
         super(context);

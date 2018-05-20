@@ -25,14 +25,14 @@
                 android:id="@+id/nav_bmis"
                 android:icon="@drawable/ic_menu_send"
                 android:title="BMIS" />
-            <!--<item
+           <!-- <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Share" />-->
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_update"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />-->
+                android:title="Manual Update " />
         </menu>
     </item>
 

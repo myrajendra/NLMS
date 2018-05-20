@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
 import com.jeevasamruddhi.telangana.nlms.android.R;
 import com.jeevasamruddhi.telangana.nlms.android.common.SessionManager;
 import com.jeevasamruddhi.telangana.nlms.android.common.Util;
@@ -28,8 +27,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Type;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**

@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:visibility="visible"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/toolbar"
+            android:background="@color/white"
+            android:visibility="visible" />
+
+        <RelativeLayout
+            android:id="@+id/rel_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:background="@color/colorPrimary"
+            android:padding="15dp"
+            android:visibility="gone">
+
+            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/updateinfo"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:typeface="roboto_bold" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_title">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/addhar_number_tv"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                         android:layout_marginRight="10dp"
+                        android:lines="2"
+                        android:text="@string/aadhar_tv"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/edit_addhar"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:layout_gravity="center"
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/date_of_grounding_tv"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:lines="2"
+                        android:text="@string/dateofground"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:id="@+id/edit_date_of_grounding"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:layout_gravity="center"
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:padding="5dp"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/place_of_grounding_tv"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="10dp"
+                        android:lines="2"
+                        android:text="@string/placeofground"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:padding="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/edit_place_of_grounding"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular" />
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/sellname_tv"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:lines="2"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/sellername"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/edit_sellername"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/seller_address_tv"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="10dp"
+                        android:lines="2"
+                        android:text="@string/seller_address"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/edit_seller_address"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular" />
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/seller_addhar_number"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="10dp"
+                        android:lines="2"
+                        android:text="@string/selleraddhar"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:padding="5dp"
+                        android:inputType="number"
+                        android:layout_gravity="center"
+                        android:id="@+id/edit_seller_addhar_no"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular" />
+
+                </LinearLayout>    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/account_num_tv"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:lines="2"
+                    android:text="@string/account_num"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:typeface="roboto_bold" />
+
+                <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                    android:padding="5dp"
+                    android:inputType="number"
+                    android:layout_gravity="center"
+                    android:id="@+id/edit_account_num"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/btnborder"
+                    android:hint=""
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:textSize="16sp"
+                    app:typeface="roboto_regular" />
+
+            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/bank_name_tv"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="10dp"
+                        android:lines="2"
+                        android:text="@string/bank_name"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/edit_bank_name"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular"  />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/ifc_num_tv"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="10dp"
+                        android:lines="2"
+                        android:text="@string/ifc_num"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/edit_ifcs"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular"  />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/account_pay_tv"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="10dp"
+                        android:lines="2"
+                        android:text="@string/amount_paid"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/edit_account_pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:lines="1"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                        android:id="@+id/payment_date_tv"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="10dp"
+                        android:lines="2"
+                        android:text="@string/payment_date"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:typeface="roboto_bold" />
+
+                    <com.jeevasamruddhi.telangana.nlms.android.customview.CustomEditText
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/edit_payment_date"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/btnborder"
+                        android:hint=""
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        app:typeface="roboto_regular" />
+
+                </LinearLayout>
+            <LinearLayout
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+                <com.jeevasamruddhi.telangana.nlms.android.customview.CustomButton
+                    android:layout_weight="1"
+                    android:id="@+id/submit_button"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/blue_background_button_4_radi"
+                    android:gravity="center"
+                    android:stateListAnimator="@null"
+                    android:text="@string/submit"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:typeface="roboto_bold" />
+                <com.jeevasamruddhi.telangana.nlms.android.customview.CustomButton
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/report_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/blue_background_button_4_radi"
+                    android:gravity="center"
+                    android:stateListAnimator="@null"
+                    android:text="@string/report"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:typeface="roboto_bold" />
+            </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>

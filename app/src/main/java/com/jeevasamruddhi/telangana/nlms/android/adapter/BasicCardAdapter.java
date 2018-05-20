@@ -71,12 +71,9 @@ public class BasicCardAdapter extends ArrayAdapter<BasicCard> {
         }
 
         BasicCard basicCard = (BasicCard) getItem(position);
-
-        int length = basicCard.getAadhaar().length();
-
         holder.name.setText(basicCard.getName());
         holder.aadhaar.setText(basicCard.getAadhaar());
-        holder.village.setText(basicCard.getVillage());
+        holder.village.setText(basicCard.getAddress());
 
         return view;
     }
@@ -99,7 +96,7 @@ public class BasicCardAdapter extends ArrayAdapter<BasicCard> {
         } else {
             for (BasicCard basicCard : basicCardList) {
                 if (basicCard.getAadhaar().toLowerCase(Locale.getDefault())
-                        .contains(charText)) {
+                        .contains(charText)||basicCard.getName().toLowerCase(Locale.getDefault()).contains(charText)) {
                     basicCards.add(basicCard);
                 }
             }

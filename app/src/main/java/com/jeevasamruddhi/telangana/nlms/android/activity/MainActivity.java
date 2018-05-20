@@ -2,12 +2,9 @@ package com.jeevasamruddhi.telangana.nlms.android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -56,6 +53,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -103,6 +101,9 @@ public class MainActivity extends AppCompatActivity
         switch(itemId) {
             case R.id.nav_bmis:
                 fragment = new BmisFragment();
+                break;
+            case R.id.nav_update:
+                startActivity(new Intent (this,ManualUpdateInfo.class));
                 break;
             case R.id.nav_logout:
                 logout();

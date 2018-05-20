@@ -13,22 +13,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.jeevasamruddhi.telangana.nlms.android.R;
 import com.jeevasamruddhi.telangana.nlms.android.common.Util;
 import com.jeevasamruddhi.telangana.nlms.android.model.BasicBenificiary;
 import com.jeevasamruddhi.telangana.nlms.android.model.BasicCard;
 import com.jeevasamruddhi.telangana.nlms.android.model.ExceptionMessage;
 import com.jeevasamruddhi.telangana.nlms.android.model.Response;
-import com.jeevasamruddhi.telangana.nlms.android.model.User;
 
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.ResourceAccessException;
-import org.springframework.web.client.RestTemplate;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.Map;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,11 +38,13 @@ import java.util.Map;
 public class BenificiaryFragment extends Fragment {
 
     protected static final String TAG = BenificiaryFragment.class.getSimpleName();
-
-    static ProgressDialog dlgCustom;
     BasicCard basicCard;
+    String responseText;
+    StringBuffer response;
     Context context;
+    static ProgressDialog dlgCustom;
 
+    List<BasicBenificiary> cardlist;
     TextView basicBenificiaryName;
     TextView basicBenificiaryAadhaar;
     TextView basicBenificiaryFarmerId;
@@ -55,7 +59,7 @@ public class BenificiaryFragment extends Fragment {
     TextView basicBenificiarySubsidy;
     TextView basicBenificiaryBenificiaryContrib;
     TextView basicBenificiaryYear;
-    TextView basicBenificiaryProceedingNo;
+    //TextView basicBenificiaryProceedingNo;
     TextView basicSiNoOfTheProceeding;
     TextView basicBenificiaryDateOfGrounding;
     TextView basicBenificiaryplaceOfGrounding;
@@ -95,7 +99,7 @@ public class BenificiaryFragment extends Fragment {
         basicBenificiarySubsidy = (TextView) view.findViewById(R.id.basicBenificiarySubsidy);
         basicBenificiaryBenificiaryContrib = (TextView) view.findViewById(R.id.basicBenificiaryBenificiaryContrib);
         basicBenificiaryYear = (TextView) view.findViewById(R.id.basicBenificiaryYear);
-        basicBenificiaryProceedingNo = (TextView) view.findViewById(R.id.basicBenificiaryProceedingNo);
+       // basicBenificiaryProceedingNo = (TextView) view.findViewById(R.id.basicBenificiaryProceedingNo);
         basicSiNoOfTheProceeding = (TextView) view.findViewById(R.id.basicSiNoOfTheProceeding);
         basicBenificiaryDateOfGrounding = (TextView) view.findViewById(R.id.basicBenificiaryDateOfGrounding);
         basicBenificiaryplaceOfGrounding = (TextView) view.findViewById(R.id.basicBenificiaryplaceOfGrounding);
@@ -144,7 +148,8 @@ public class BenificiaryFragment extends Fragment {
 
         @Override
         protected Response doInBackground(String... strings) {
-            final String url = getString(R.string.base_url) + "/nlms/basic/benificiary";
+            getWebServiceResponseData(Util.Ipaddress+"beneficiaries/aadhar?aadharNo="+basicCard.getAadhaar());
+         /*   final String url = getString(R.string.base_url) + "/nlms/basic/benificiary";
             // Create a new RestTemplate instance
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -166,7 +171,7 @@ public class BenificiaryFragment extends Fragment {
                 exceptionMessage = new ExceptionMessage(true, "Resource Access Exception", e.getClass().getSimpleName() + " - " + e.getLocalizedMessage());
             }catch (Exception e) {
 
-            }
+            }*/
 
             return response;
         }
@@ -174,50 +179,109 @@ public class BenificiaryFragment extends Fragment {
         @Override
         protected void onPostExecute(Response response) {
 
-            Log.i("response : ", String.valueOf(response));
-            if (response.isSuccessful()) {
-                Log.i("responseObject : ", String.valueOf(response.getResponseObject()));
-                Map map = (Map) response.getResponseObject();
-                Log.i("map : ", String.valueOf(map));
-                Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(map);
-                BasicBenificiary basicBenificiary = gson.fromJson(jsonElement, BasicBenificiary.class);
+          if(cardlist !=null && cardlist.size()>0) {
+              for(int i =0; i < cardlist.size();i++) {
+                  basicBenificiaryName.setText("Name: " + cardlist.get(i).getName());
+                  basicBenificiaryAadhaar.setText("Aadhaar: " + cardlist.get(i).getAadhaar());
+                  //basicBenificiaryName.setText(basicBenificiary);
+                  basicBenificiaryFarmerId.setText("Farmer ID: -NA-" );
+                  Log.i("FatherOrHusbandName : ", String.valueOf(cardlist.get(i).getFather()));
+                  basicBenificiaryFatherOrHusbandName.setText("Father/Husband Name: " +cardlist.get(i).getFather());
+                  basicBenificiaryVillage.setText("Village: " + cardlist.get(i).getAdress());
+                  basicBenificiaryMandal.setText("Mandal: " + cardlist.get(i).getMandal());
+                  basicBenificiaryDistrict.setText("District: " + cardlist.get(i).getDistrict());
+                  basicBenificiarySanctionOderId.setText("Sanction Order ID: -NA-");
+                  basicBenificiaryDepartment.setText("Department name : Veterinary and Animal Husbandry." );
+                  basicBenificiaryScheme.setText("Scheme:SRDP(Sheep Rear Development Project )" );
+                  basicBenificiaryUnitCost.setText("Unit Cost: 1,25,000" );
+                  basicBenificiarySubsidy.setText("Subsidy: 93750" );
+                  basicBenificiaryBenificiaryContrib.setText("Benificiary contribution : 31250" );
+                  basicBenificiaryYear.setText("Year: 2017-2018" );
+                 // basicBenificiaryProceedingNo.setText("Proceeding No: -NA-" );
+                  basicSiNoOfTheProceeding.setText("No in The Proceeding : -NA- " );
+                  basicBenificiaryDateOfGrounding.setText("Date Of Grounding: -NA-" );
+                  basicBenificiaryplaceOfGrounding.setText("Place Of Grounding:  -NA-" );
+                  basicBenificiarySellerName.setText("Seller Name: -NA-" );
+                  basicSellerFatherOrHusbandName.setText("Seller Father/Husband Name: -NA-" );
+                  basicBenificiarySellerAddress.setText("Seller Address: -NA-" );
+                  basicBenificiarySellerAadhar.setText("Seller Aadhaar: -NA-" );
+                  basicBenificiarySellerAccountNumber.setText("Seller Account Number: -NA-" );
+                  basicBenificiaryAmountPaid.setText("Amount Paid: -NA-" );
+                  basicBenificiaryChequeNoIssuedByTheDvaho.setText("Cheque No Issued By The DVAHO: -NA-" );
+                  basicBenificiaryDate.setText("Date: -NA-" );
+              }
 
-                basicBenificiaryName.setText("Name: " + basicBenificiary.getName());
-                basicBenificiaryAadhaar.setText("Aadhaar: " + basicBenificiary.getAadhaar());
-                //basicBenificiaryName.setText(basicBenificiary);
-                basicBenificiaryFarmerId.setText("Farmer ID: " + basicBenificiary.getFarmerId());
-                Log.i("FatherOrHusbandName : ", String.valueOf(basicBenificiary.getFatherOrHusbandName()));
-                basicBenificiaryFatherOrHusbandName.setText("Father/Husband Name: " + basicBenificiary.getFatherOrHusbandName());
-                basicBenificiaryVillage.setText("Village: " + basicBenificiary.getVillage());
-                basicBenificiaryMandal.setText("Mandal: " + basicBenificiary.getMandal());
-                basicBenificiaryDistrict.setText("District: " + basicBenificiary.getDistrict());
-                basicBenificiarySanctionOderId.setText("Sanction Oder ID: " + basicBenificiary.getSanctionOderId());
-                basicBenificiaryDepartment.setText("Departmaent: " + basicBenificiary.getDepartment());
-                basicBenificiaryScheme.setText("Scheme: " + basicBenificiary.getSchemeName());
-                basicBenificiaryUnitCost.setText("Unit Cost: " + basicBenificiary.getUnitCost());
-                basicBenificiarySubsidy.setText("Subsidy: " + basicBenificiary.getSubsidy());
-                basicBenificiaryBenificiaryContrib.setText("Benificiary Contrib: " + basicBenificiary.getBenificiaryContrib());
-                basicBenificiaryYear.setText("Year: " + basicBenificiary.getYear());
-                basicBenificiaryProceedingNo.setText("Proceeding No: " + basicBenificiary.getProceedingNo());
-                basicSiNoOfTheProceeding.setText("No Of The Proceeding: " + basicBenificiary.getSiNoOfTheProceeding());
-                basicBenificiaryDateOfGrounding.setText("Date Of Grounding: " + basicBenificiary.getDateOfGrounding());
-                basicBenificiaryplaceOfGrounding.setText("Place Of Grounding: " + basicBenificiary.getPlaceOfGrounding());
-                basicBenificiarySellerName.setText("Seller Name: " + basicBenificiary.getSellerName());
-                basicSellerFatherOrHusbandName.setText("Seller Father/Husband Name: " + basicBenificiary.getSellerFatherOrHusbandName());
-                basicBenificiarySellerAddress.setText("Seller Address: " + basicBenificiary.getSellerAddress());
-                basicBenificiarySellerAadhar.setText("Seller Aadhaar: " + basicBenificiary.getSellerAadhar());
-                basicBenificiarySellerAccountNumber.setText("Seller Account Number:" + basicBenificiary.getSellerAccountNumber());
-                basicBenificiaryAmountPaid.setText("Amount Paid:" + basicBenificiary.getAmountPaid());
-                basicBenificiaryChequeNoIssuedByTheDvaho.setText("Cheque No Issued By The DVAHO: " + basicBenificiary.getChequeNoIssuedByTheDvaho());
-                basicBenificiaryDate.setText("Date: " + basicBenificiary.getDate());
-
-
+          }
                 dlgCustom.dismiss();
-            }else {
-                dlgCustom.dismiss();
-                Toast.makeText(getContext(), "response Status - " + response.isSuccessful() + " - " + response.getErrorMessage(), Toast.LENGTH_LONG).show();
-            }
+
         }
+    }
+    protected Void getWebServiceResponseData(String path) {
+
+        try {
+
+            URL url = new URL(path);
+            Log.d(TAG, "ServerData: " + path);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(15000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("GET");
+
+            int responseCode = conn.getResponseCode();
+
+            Log.d(TAG, "Response code: " + responseCode);
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                // Reading response from input Stream
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(conn.getInputStream()));
+                String output;
+                response = new StringBuffer();
+
+                while ((output = in.readLine()) != null) {
+                    response.append(output);
+                }
+                in.close();
+            }}
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+        responseText = response.toString();
+        //Call ServerData() method to call webservice and store result in response
+        //  response = service.ServerData(path, postDataParams);
+        Log.d(TAG, "data:" + responseText);
+        try {
+            JSONObject jsonObj = new JSONObject(responseText);
+
+            // Getting JSON Array node
+            JSONObject jsonValue = jsonObj.getJSONObject("message");
+            cardlist = new ArrayList<>();
+            if(jsonValue!=null ){
+
+                    BasicBenificiary card= new BasicBenificiary();
+                    card.setAadhaar(jsonValue.getString("aadharNo"));
+                    card.setName(jsonValue.getString("name"));
+                    card.setFather(jsonValue.getString("fatherOrHusbandName"));
+                    card.setMobileNo(jsonValue.getString("mobileNo"));
+                    card.setAdress(jsonValue.getString("address"));
+                    card.setGender(jsonValue.getString("gender"));
+                    card.setCaste(jsonValue.getString("caste"));
+                    card.setIncome(jsonValue.getString("income"));
+                    card.setdisability(jsonValue.getString("disability"));
+                    card.setbankname(jsonValue.getString("bankName"));
+                    card.setifscode(jsonValue.getString("ifscCode"));
+                    card.setaccountNo(jsonValue.getString("accountNo"));
+                    card.setappiledDate(jsonValue.getString("appliedDate"));
+                    card.setMandal(jsonValue.getString("mandalName"));
+                    card.setDistrict(jsonValue.getString("districtName"));
+                    cardlist.add(card);
+
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

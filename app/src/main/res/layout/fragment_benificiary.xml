@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.jeevasamruddhi.telangana.nlms.android.fragment.BenificiaryFragment">
@@ -8,7 +9,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <!-- TODO: Update blank fragment layout -->
+        <!-- TODO: Update blank fragment layout -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -18,252 +19,132 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/profile"
-
                 android:orientation="vertical">
 
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|center_vertical|center"
-                android:layout_marginBottom="0.5dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginTop="0.5dp"
-                card_view:cardCornerRadius="4dp">
-
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/defaultProfile"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/icon_default_profile" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_vertical|center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    app:cardCornerRadius="4dp">
 
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:padding="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="15dp"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/basicBenificiaryName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                        <ImageView
+                            android:id="@+id/defaultProfile"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/icon_default_profile" />
 
-                        <TextView
-                            android:id="@+id/basicBenificiaryAadhaar"
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/basicBenificiaryFarmerId"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                android:id="@+id/basicBenificiaryName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:typeface="roboto_regular"
+                                />
+
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_regular"
+                                android:id="@+id/basicBenificiaryAadhaar"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_regular"
+                                android:id="@+id/basicBenificiaryFarmerId"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/profile_layout"
-                    android:layout_marginTop="70dp"
-                    android:orientation="vertical">
-
-                    <!--<TextView
-                    android:id="@+id/basicBenificiaryFatherOrHusbandNameLable"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:elevation="4dp"
-                    android:padding="10dp"
-                    android:text="Father/Husband Name :" />-->
-                    <TextView
-                        android:id="@+id/basicBenificiaryFatherOrHusbandName"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="5dp"
-                        android:text="Father/Husband Name : \n" />
-                    <TextView
-                        android:id="@+id/basicBenificiaryVillage"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="5dp"
-                        android:text="Village : " />
-                    <TextView
-                        android:id="@+id/basicBenificiaryMandal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="5dp"
-                        android:text="Mandal :" />
-                    <TextView
-                        android:id="@+id/basicBenificiaryDistrict"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="5dp"
-                        android:text="District : " />
-                    <TextView
-                        android:id="@+id/basicBenificiarySanctionOderId"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="5dp"
-                        android:text="sanction Oder ID : " />
-
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view_scheme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:cardElevation="8dp"
-                card_view:cardCornerRadius="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/heading_layout"
+                        android:padding="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#009688"
-                        android:padding="2dp"
+                        android:layout_below="@+id/profile_layout"
+                        android:layout_marginTop="70dp"
                         android:orientation="vertical">
 
-
-
-                        <TextView
-                            android:id="@+id/tv_subheading"
-                            android:layout_width="wrap_content"
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryFatherOrHusbandName"
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:layout_below="@+id/tv_heading_scheme"
-                            android:text="Scheme and Subsidy"
-                            android:textColor="#80CBC4"
-                            android:textSize="24sp" />
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="5dp"
+                            android:text="Father/Husband Name : \n" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryVillage"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="5dp"
+                            android:text="Village : " />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryMandal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="5dp"
+                            android:text="Mandal :" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryDistrict"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="5dp"
+                            android:text="District : " />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiarySanctionOderId"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="5dp"
+                            android:text="sanction Oder ID : " />
+
 
                     </LinearLayout>
 
+                </android.support.v7.widget.CardView>
 
-                    <!--<TextView
-                        android:id="@+id/tv_footer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:layout_below="@+id/tv_heading"
-                        android:text="CardView"
-                        android:textColor="#9E9E9E"
-                        android:textStyle="bold"
-                        android:textSize="24sp" />-->
-                    <TextView
-                        android:id="@+id/basicBenificiaryDepartment"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="3dp"
-                        android:text="Department :" />
-                    <TextView
-                        android:id="@+id/basicBenificiaryScheme"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="3dp"
-                        android:text="Scheme :" />
-
-                    <TextView
-                        android:id="@+id/basicBenificiaryUnitCost"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="3dp"
-                        android:text="Unit Cost :" />
-
-                    <TextView
-                        android:id="@+id/basicBenificiarySubsidy"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="3dp"
-                        android:text="Subsidy :" />
-                    <TextView
-                        android:id="@+id/basicBenificiaryBenificiaryContrib"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="3dp"
-                        android:text="Benificiary Contrib :" />
-                    <TextView
-                        android:id="@+id/basicBenificiaryYear"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:elevation="4dp"
-                        android:padding="3dp"
-                        android:text="Year :" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_view_Grounding"
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_scheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:cardElevation="8dp"
-                    card_view:cardCornerRadius="2dp">
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="4dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -271,24 +152,25 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/heading_layout_Grounding"
+                            android:id="@+id/heading_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#009688"
-                            android:padding="2dp"
+                            android:background="@color/colorPrimary"
+                            android:padding="10dp"
                             android:orientation="vertical">
 
 
 
-                            <TextView
-                                android:id="@+id/tv_subheading_Grounding"
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_bold"
+                                android:id="@+id/tv_subheading"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
-
-                                android:text="Grounding"
-                                android:textColor="#80CBC4"
-                                android:textSize="24sp" />
+                                android:layout_below="@+id/tv_heading_scheme"
+                                android:text="Scheme and Subsidy"
+                                android:textColor="@color/white"
+                                android:textSize="21dp"/>
 
                         </LinearLayout>
 
@@ -303,184 +185,884 @@
                             android:textColor="#9E9E9E"
                             android:textStyle="bold"
                             android:textSize="24sp" />-->
-                        <TextView
-                            android:id="@+id/basicBenificiaryProceedingNo"
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryDepartment"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#fff"
                             android:clickable="true"
-                            android:elevation="4dp"
                             android:padding="3dp"
-                            android:text="Proceeding No :" />
-                        <TextView
+                            android:text="Department :" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryScheme"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Scheme :" />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryUnitCost"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Unit Cost :" />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiarySubsidy"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Subsidy :" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryBenificiaryContrib"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Benificiary Contrib :" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryYear"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Year :" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_Grounding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardElevation="8dp"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/heading_layout_Grounding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+                            android:padding="5dp"
+                            android:orientation="vertical">
+
+
+
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_bold"
+                                android:id="@+id/tv_subheading_Grounding"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="Grounding"
+                                android:textColor="@color/white"
+                                android:textSize="21dp" />
+
+                        </LinearLayout>
+
+
+                        <!--<TextView
+                            android:id="@+id/tv_footer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_below="@+id/tv_heading"
+                            android:text="CardView"
+                            android:textColor="#9E9E9E"
+                            android:textStyle="bold"
+                            android:textSize="24sp" />-->
+                        <!-- <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                             app:typeface="roboto_regular"
+                             android:id="@+id/basicBenificiaryProceedingNo"
+                             android:layout_width="fill_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_margin="5dp"
+                             android:background="#fff"
+                             android:clickable="true"
+                             android:padding="3dp"
+                             android:text="Proceeding No :" />-->
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
                             android:id="@+id/basicSiNoOfTheProceeding"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#fff"
                             android:clickable="true"
-                            android:elevation="4dp"
                             android:padding="3dp"
                             android:text="SI No. of The Proceeding :" />
 
-                        <TextView
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
                             android:id="@+id/basicBenificiaryDateOfGrounding"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#fff"
                             android:clickable="true"
-                            android:elevation="4dp"
                             android:padding="3dp"
                             android:text="Date of Grounding :" />
 
-                        <TextView
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
                             android:id="@+id/basicBenificiaryplaceOfGrounding"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#fff"
                             android:clickable="true"
-                            android:elevation="4dp"
                             android:padding="3dp"
                             android:text="Place of Grounding :" />
 
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view_seller"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:cardElevation="8dp"
-            card_view:cardCornerRadius="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/heading_layout_seller"
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_seller"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#009688"
-                    android:padding="2dp"
-                    android:orientation="vertical">
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="4dp">
 
-
-
-                    <TextView
-                        android:id="@+id/tv_subheading_seller"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:orientation="vertical">
 
-                        android:text="Seller Details"
-                        android:textColor="#80CBC4"
-                        android:textSize="24sp" />
+                        <LinearLayout
+                            android:id="@+id/heading_layout_seller"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+                            android:padding="4dp"
+                            android:orientation="vertical">
 
-                </LinearLayout>
 
 
-                <!--<TextView
-                    android:id="@+id/tv_footer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:layout_below="@+id/tv_heading"
-                    android:text="CardView"
-                    android:textColor="#9E9E9E"
-                    android:textStyle="bold"
-                    android:textSize="24sp" />-->
-                <TextView
-                    android:id="@+id/basicBenificiarySellerName"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:elevation="4dp"
-                    android:padding="3dp"
-                    android:text="Seller Name :" />
-                <TextView
-                    android:id="@+id/basicSellerFatherOrHusbandName"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:elevation="4dp"
-                    android:padding="3dp"
-                    android:text="Seller Father/Husband Name: /n" />
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_regular"
+                                android:id="@+id/tv_subheading_seller"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="Seller Details"
+                                android:textColor="@color/white"
+                                android:textSize="21dp" />
 
-                <TextView
-                    android:id="@+id/basicBenificiarySellerAddress"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:elevation="4dp"
-                    android:padding="3dp"
-                    android:text="Seller Address :" />
+                        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/basicBenificiarySellerAadhar"
-                    android:layout_width="fill_parent"
+
+                        <!--<TextView
+                            android:id="@+id/tv_footer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_below="@+id/tv_heading"
+                            android:text="CardView"
+                            android:textColor="#9E9E9E"
+                            android:textStyle="bold"
+                            android:textSize="24sp" />-->
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiarySellerName"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Seller Name :" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicSellerFatherOrHusbandName"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Seller Father/Husband Name: /n" />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiarySellerAddress"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Seller Address :" />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiarySellerAadhar"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Seller Aadhaar :" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiarySellerAccountNumber"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="seller Account Number :" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryAmountPaid"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Amount Paid :" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryChequeNoIssuedByTheDvaho"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Cheque No Issued By The DVAHO :" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/basicBenificiaryDate"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Date :" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:elevation="4dp"
-                    android:padding="3dp"
-                    android:text="Seller Aadhaar :" />
-                <TextView
-                    android:id="@+id/basicBenificiarySellerAccountNumber"
-                    android:layout_width="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/heading_layout_transportation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+                            android:padding="4dp"
+                            android:orientation="vertical">
+
+
+
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_regular"
+                                android:id="@+id/tv_subheading_transp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="Cost of the Transportation"
+                                android:textColor="@color/white"
+                                android:textSize="21dp" />
+
+                        </LinearLayout>
+
+
+                        <!--<TextView
+                            android:id="@+id/tv_footer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_below="@+id/tv_heading"
+                            android:text="CardView"
+                            android:textColor="#9E9E9E"
+                            android:textStyle="bold"
+                            android:textSize="24sp" />-->
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/tran_vechicle_no"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Vehicle Number:-NA-" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/tran_name"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Name of the Transporter:-NA-" />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/kilometer_tv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="kilometres :-NA-" />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/amount_tv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="amount paid :-NA-" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/cheq_tv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Cheque No. Issued by the DVAH:-NA-" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/date_tv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Date :-NA-" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_medicines"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:elevation="4dp"
-                    android:padding="3dp"
-                    android:text="seller Account Number :" />
-                <TextView
-                    android:id="@+id/basicBenificiaryAmountPaid"
-                    android:layout_width="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/heading_layout_medicinies"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+                            android:padding="4dp"
+                            android:orientation="vertical">
+
+
+
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_regular"
+                                android:id="@+id/tv_subheading_medicinies"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="Medicines "
+                                android:textColor="@color/white"
+                                android:textSize="21dp" />
+
+                        </LinearLayout>
+
+
+                        <!--<TextView
+                            android:id="@+id/tv_footer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_below="@+id/tv_heading"
+                            android:text="CardView"
+                            android:textColor="#9E9E9E"
+                            android:textStyle="bold"
+                            android:textSize="24sp" />-->
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/medicine_expenditure"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Expenditure Incured :-NA-" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/cheq_medi"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Cheque No. Issued by the DVAHO :-NA-" />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/medicine_date"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Date :-NA-" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+
+                    android:id="@+id/card_view_feed"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:elevation="4dp"
-                    android:padding="3dp"
-                    android:text="Amount Paid :" />
-                <TextView
-                    android:id="@+id/basicBenificiaryChequeNoIssuedByTheDvaho"
-                    android:layout_width="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/heading_layout_feed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+                            android:padding="4dp"
+                            android:orientation="vertical">
+
+
+
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_regular"
+                                android:id="@+id/tv_subheading_feed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="Fodder"
+                                android:textColor="@color/white"
+                                android:textSize="21dp" />
+
+                        </LinearLayout>
+
+
+                        <!--<TextView
+                            android:id="@+id/tv_footer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_below="@+id/tv_heading"
+                            android:text="CardView"
+                            android:textColor="#9E9E9E"
+                            android:textStyle="bold"
+                            android:textSize="24sp" />-->
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_bold"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Feed:" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/feed_list"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Status of the unit :" />
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="match_parent">
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomRadioButton
+                                android:id="@+id/present"
+                                app:typeface="roboto_regular"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:text="Present"
+                                android:buttonTint="@color/colorPrimary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent" />
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomRadioButton
+                                android:id="@+id/migrated"
+                                android:buttonTint="@color/colorPrimary"
+                                app:typeface="roboto_regular"
+                                android:layout_weight="1"
+                                android:text="Migrated"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent" />
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomRadioButton
+                                android:id="@+id/sold"
+                                android:buttonTint="@color/colorPrimary"
+                                app:typeface="roboto_regular"
+                                android:layout_weight="1"
+                                android:text="Sold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent" />
+
+                        </RadioGroup>
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/feed_quantity"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Quantity of the Feed supply : 206.3 Kgs per unit." />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/feed_date"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Date of Supply: -NA-" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/feed_expenditure"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Amount Expenditure : 3445 Rs." />
+
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_bold"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Fodder:" />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/feed_arc"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Extent of area fodder developed in acre : -NA-" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/feed_variety"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:padding="3dp"
+                            android:text="variety of the fodder" />
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="match_parent">
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomRadioButton
+                                android:id="@+id/jowar"
+                                app:typeface="roboto_regular"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:text="Jowar "
+                                android:buttonTint="@color/colorPrimary"
+                                android:background="#fff"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent" />
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomRadioButton
+                                android:id="@+id/maize"
+                                app:typeface="roboto_regular"
+                                android:layout_weight="1"
+                                android:buttonTint="@color/colorPrimary"
+                                android:text="Maize "
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent" />
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomRadioButton
+                                android:id="@+id/apbn"
+                                android:buttonTint="@color/colorPrimary"
+                                app:typeface="roboto_regular"
+                                android:layout_weight="1"
+                                android:text="APBN "
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent" />
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomRadioButton
+                                android:id="@+id/other"
+                                app:typeface="roboto_regular"
+                                android:layout_weight="1"
+                                android:text="Others "
+                                android:buttonTint="@color/colorPrimary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent" />
+
+
+                        </RadioGroup>
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/cheq_feed"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Cheque No. Issued by the DVAHO :-NA-" />
+
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_policy"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:elevation="4dp"
-                    android:padding="3dp"
-                    android:text="Cheque No Issued By The DVAHO :" />
-                <TextView
-                    android:id="@+id/basicBenificiaryDate"
-                    android:layout_width="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/heading_layout_policy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+                            android:padding="4dp"
+                            android:orientation="vertical">
+
+
+
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_regular"
+                                android:id="@+id/tv_subheading_policy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="PolicyDetails "
+                                android:textColor="@color/white"
+                                android:textSize="21dp" />
+
+                        </LinearLayout>
+
+
+                        <!--<TextView
+                            android:id="@+id/tv_footer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_below="@+id/tv_heading"
+                            android:text="CardView"
+                            android:textColor="#9E9E9E"
+                            android:textStyle="bold"
+                            android:textSize="24sp" />-->
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/policy_details"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Policy Number : -NA-" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/policy_period"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Period : -NA-" />
+
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_total"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:elevation="4dp"
-                    android:padding="3dp"
-                    android:text="Date :" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/heading_layout_total"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+                            android:padding="4dp"
+                            android:orientation="vertical">
+
+
+
+                            <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                                app:typeface="roboto_regular"
+                                android:id="@+id/tv_subheading_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="Total Expenditure of the Project "
+                                android:textColor="@color/white"
+                                android:textSize="21dp" />
+
+                        </LinearLayout>
+
+
+                        <!--<TextView
+                            android:id="@+id/tv_footer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_below="@+id/tv_heading"
+                            android:text="CardView"
+                            android:textColor="#9E9E9E"
+                            android:textStyle="bold"
+                            android:textSize="24sp" />-->
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/selleramount"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Seller Amount:  0" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/insurance"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Insurance  Amount:  0" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/transp_amount"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Transportation Amount:  0" />
+
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/medicine_amount"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Medicines Expenditure:  0" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/feed_amount"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Feed &amp; Fodder Expenditure : 0" />
+                        <com.jeevasamruddhi.telangana.nlms.android.customview.CustomTextView
+                            app:typeface="roboto_regular"
+                            android:id="@+id/total_amount"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="#fff"
+                            android:clickable="true"
+                            android:padding="3dp"
+                            android:text="Total Cost:  0"  />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

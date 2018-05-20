@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nilagiri Livstock"
+            android:text="Nilagiri Livestock"
             android:fontFamily="cursive"
             android:textColor="#534fc9"
             android:gravity="center"

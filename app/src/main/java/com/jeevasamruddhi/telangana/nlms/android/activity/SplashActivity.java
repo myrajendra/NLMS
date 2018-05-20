@@ -2,14 +2,17 @@ package com.jeevasamruddhi.telangana.nlms.android.activity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -20,6 +23,7 @@ import com.jeevasamruddhi.telangana.nlms.android.common.Util;
 import com.jeevasamruddhi.telangana.nlms.android.model.ExceptionMessage;
 import com.jeevasamruddhi.telangana.nlms.android.model.Response;
 
+import org.jsoup.Jsoup;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
@@ -31,6 +35,8 @@ public class SplashActivity extends AppCompatActivity {
 
     protected static final String TAG = SplashActivity.class.getName();
     Context context;
+    String currentVersion;
+    Boolean permissioncheck = false;
 
     private static String[] PERMISSIONS = {
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -45,10 +51,19 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         context = getApplicationContext();
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
                 || ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
         }
+        try {
+            currentVersion = context.getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            new GetVersionCode().execute();
+
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -57,6 +72,7 @@ public class SplashActivity extends AppCompatActivity {
             case MY_PERMISSIONS_REQUEST_READ_CONTACTS:
                 if (PermissionUtil.verifyPermissions(grantResults)) {
                     Toast.makeText(this, "Permissions granted.", Toast.LENGTH_SHORT).show();
+                    permissioncheck =true;
                     //recreate();
 
                     /****** Create Thread *************/
@@ -70,7 +86,24 @@ public class SplashActivity extends AppCompatActivity {
                                 sleep(3*1000);
 
                                 if(Util.isNetworkAvailable(getApplicationContext())) {
-                                    new AppVersionAsync(getApplicationContext()).execute();
+                                   // new AppVersionAsync(getApplicationContext()).execute();
+                                    /*String logUser = SessionManager.getPreferences(SplashActivity.this, "logUser");
+
+                                    if(logUser!=null && !logUser.isEmpty() && logUser.length() > 3)
+                                    {
+                                        // Creating Bundle object
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("logUser", logUser);
+
+                                        Intent i=new Intent(SplashActivity.this,MainActivity.class);
+                                        i.putExtras(bundle);
+                                        startActivity(i);
+                                        finish();
+                                    }else {
+                                        Intent i = new Intent(SplashActivity.this, SignInActivity.class);
+                                        startActivity(i);
+                                        finish();
+                                    }*/
                                 }else {
 
                                     Toast.makeText(context, "Sorry, no internet connectivity detected. Please reconnect and try again.", Toast.LENGTH_LONG).show();
@@ -90,6 +123,7 @@ public class SplashActivity extends AppCompatActivity {
                     background.start();
 
                 } else {
+                    permissioncheck =false;
                     Toast.makeText(this, "Permissions not granted.", Toast.LENGTH_SHORT).show();
                 }
         }
@@ -222,5 +256,73 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+    private class GetVersionCode extends AsyncTask<Void, String, String> {
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            String newVersion = null;
+            try {
+                newVersion = Jsoup.connect("https://play.google.com/store/apps/details?id=" + SplashActivity.this.getPackageName() + "&hl=it")
+                        .timeout(30000)
+                        .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
+                        .referrer("http://www.google.com")
+                        .get()
+                        .select("div[itemprop=softwareVersion]")
+                        .first()
+                        .ownText();
+                return newVersion;
+            } catch (Exception e) {
+                return newVersion;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String onlineVersion) {
+            super.onPostExecute(onlineVersion);
+            if (onlineVersion != null && !onlineVersion.isEmpty()) {
+                if (Float.valueOf(currentVersion) < Float.valueOf(onlineVersion)) {
+                    //show dialog
+                    showForceUpdateDialog(currentVersion + ":" + onlineVersion);
+                } else {
+                    if (permissioncheck) {
+                        if (Util.isNetworkAvailable(getApplicationContext())) {
+                            new AppVersionAsync(getApplicationContext()).execute();
+                        } else {
+
+                            Toast.makeText(context, "Sorry, no internet connectivity detected. Please reconnect and try again.", Toast.LENGTH_LONG).show();
+                            //Util.showAlertDialg(get, "Sorry, no internet connectivity detected. Please reconnect and try again.", "No Internet Connection", true);
+                        }
+                    }
+                }
+            } else {
+                if (permissioncheck) {
+                    if (Util.isNetworkAvailable(getApplicationContext())) {
+                        new AppVersionAsync(getApplicationContext()).execute();
+                    } else {
+
+                        Toast.makeText(context, "Sorry, no internet connectivity detected. Please reconnect and try again.", Toast.LENGTH_LONG).show();
+                        //Util.showAlertDialg(get, "Sorry, no internet connectivity detected. Please reconnect and try again.", "No Internet Connection", true);
+                    }
+                }
+
+
+            }
+            Log.d("update", "Current version " + currentVersion + "playstore version " + onlineVersion);
+        }
+    }
+    public void showForceUpdateDialog(String latestVersion){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SplashActivity.this);
+
+        alertDialogBuilder.setTitle(context.getString(R.string.youAreNotUpdatedTitle));
+        alertDialogBuilder.setMessage(context.getString(R.string.youAreNotUpdatedMessage) + " " + latestVersion + context.getString(R.string.youAreNotUpdatedMessage1));
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + context.getPackageName())));
+                dialog.cancel();
+            }
+        });
+        alertDialogBuilder.show();
     }
 }

@@ -14,7 +14,15 @@ public class Response extends BaseModel
 
 	private Object responseObject;
 
-	private String errorMessage;
+	private String errorMessage,content;
+	private String[] messages;
+
+	public String[] getMessages() {
+		return messages;
+	}
+	public void setMessages(String[] messages) {
+		this.messages = messages;
+	}
 
 	public boolean isSuccessful()
 	{
@@ -54,5 +62,13 @@ public class Response extends BaseModel
 	public void setErrorMessage(String errorMessage)
 	{
 		this.errorMessage = errorMessage;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getContent() {
+		return content;
 	}
 }

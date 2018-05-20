@@ -1,10 +1,10 @@
 package com.jeevasamruddhi.telangana.nlms.android.model;
 
-public class BasicBenificiary extends BaseModel{
+public class BasicBenificiary extends BaseModel {
 	
 	private String name; 
 	private String aadhaar; 
-	private String fatherOrHusbandName;
+	private String Father;
 	private String village;
 	private String mandal;
 	private String district; 
@@ -26,9 +26,13 @@ public class BasicBenificiary extends BaseModel{
 	private String sellerAadhar;
 	private String sellerAccountNumber; 
 	private String amountPaid;
-	private String chequeNoIssuedByTheDvaho;
-	private String date;
-	
+	private String chequeNoIssuedByTheDvaho,gender,caste,income,disability,bankname,ifscode,accountNo,appiledDate,dist;
+	private String date,mobileNo,adress;
+
+	public String getMobileNo() {
+		return mobileNo;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -41,11 +45,11 @@ public class BasicBenificiary extends BaseModel{
 	public void setAadhaar(String aadhaar) {
 		this.aadhaar = aadhaar;
 	}
-	public String getFatherOrHusbandName() {
-		return fatherOrHusbandName;
+	public String getFather() {
+		return Father;
 	}
-	public void setFatherOrHusbandName(String fatherOrHusbandName) {
-		fatherOrHusbandName = fatherOrHusbandName;
+	public void setFather(String father) {
+		Father = father;
 	}
 	public String getVillage() {
 		return village;
@@ -184,5 +188,89 @@ public class BasicBenificiary extends BaseModel{
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setCaste(String caste) {
+		this.caste = caste;
+	}
+
+	public void setIncome(String income) {
+		this.income = income;
+	}
+
+	public void setdisability(String disability) {
+		this.disability = disability;
+	}
+
+	public void setbankname(String bankname) {
+		this.bankname = bankname;
+	}
+
+	public void setifscode(String ifscode) {
+		this.ifscode = ifscode;
+	}
+
+	public void setaccountNo(String accountNo) {
+		this.accountNo = accountNo;
+	}
+
+	public void setappiledDate(String appiledDate) {
+		this.appiledDate = appiledDate;
+	}
+
+	public void setDist(String dist) {
+		this.dist = dist;
+	}
+
+	public String getAccountNo() {
+		return accountNo;
+	}
+
+	public String getAppiledDate() {
+		return appiledDate;
+	}
+
+	public String getBankname() {
+		return bankname;
+	}
+
+	public String getCaste() {
+		return caste;
+	}
+
+	public String getDisability() {
+		return disability;
+	}
+
+	public String getDist() {
+		return dist;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public String getIfscode() {
+		return ifscode;
+	}
+
+	public String getIncome() {
+		return income;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getAdress() {
+		return adress;
 	}
 }

@@ -29,6 +29,7 @@ import java.util.Locale;
 
 public class Util {
     public static LocationManager mLocationManager;
+    public static String Ipaddress ="http://52.87.191.211:8080/nlms/";
 
     public static void showAlertDialg(final Activity activity, String strMsg, String title, boolean isclose) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
